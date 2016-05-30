@@ -41,4 +41,4 @@ mybot.on("serverNewMember", function(server, user){
 });
 
 // A token.
-mybot.loginWithToken("???);
+mybot.loginWithToken("???");
