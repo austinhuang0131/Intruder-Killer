@@ -36,4 +36,4 @@ mybot.on(`serverNewMember`, (server, user) => {
   }
 });
 
-mybot.loginWithToken("MTg2NTA3NDI2MzAyNzg3NTg0.CiyiEw.eDojIXeRU29vF5OsyWRd2egVU1A");
+mybot.loginWithToken("Replace.It.With.Your.Own.Token");
