@@ -14,20 +14,20 @@ fs.readdir('./servers/', function(error, files) {
   for (var i= 0; i < files.length; i++) {
     (function(tmp_i) {
       //read current json file for settings
-        fs.readFile('./servers/' + files[tmp_i] + '.json', function(error, data) {
-          if (error) {
-            console.error(error);
-            return;
-          }
+      fs.readFile('./servers/' + files[tmp_i] + '.json', function(error, data) {
+        if (error) {
+          console.error(error);
+          return;
+        }
 
-          // try to parse it
-          try {
-            serverSettings[files[tmp_i]] = JSON.parse(data); //Parse the settings file and add it to the global var called "serverSettings" with the key being the server ID/file name.
-          } catch(e) {
-            //throw the error if it fails. I suggest you do a bit of error handling yourself.
-            throw e;
-          }
-        });
+        // try to parse it
+        try {
+          serverSettings[files[tmp_i]] = JSON.parse(data); //Parse the settings file and add it to the global var called "serverSettings" with the key being the server ID/file name.
+        } catch(e) {
+          //throw the error if it fails. I suggest you do a bit of error handling yourself.
+          throw e;
+        }
+      });
     })(i);
   }
   //login with your token
@@ -48,8 +48,14 @@ mybot.on('ready', function() {
 
 mybot.on("message", function(message){
   if (message.content === "dshset") {
-    serverSettings[message.channel.server.id].settings = {}; // create the settings object (top level json object
+    console.log('serverSettings#1: ', serverSettings);
+    console.log('serverID: ' + message.channel.server.id);
+    serverSettings[message.channel.server.id] = {
+      "settings": {}
+    };
+    console.log('serverSettings#2: ', serverSettings);
     serverSettings[message.channel.server.id].settings.whitelisted = message.channel.id; // create the key called "whitelisted" and give it the value of the channel the message was sent form
+    console.log('serverSettings[serverID]: ', serverSettings[message.channel.server.id]);
     // save the settings to a file
     fs.writeFile('./servers/' + message.channel.server.id + '.json', JSON.stringify(serverSettings[message.channel.server.id]), function(error) {
       if (error) {
