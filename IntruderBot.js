@@ -4,7 +4,7 @@
 
 var fs = require('fs'); // require the filesystem module
 var Discord = require("discord.js"); // Requires discord.js no doubt
-var rest = require('rest'); // Requires rest.js
+// var rest = require('rest'); If you need the auto fetch feature.
 
 var mybot = new Discord.Client();
 
@@ -18,7 +18,7 @@ fs.readdir('./servers/', function(error, files) {
   for (var i= 0; i < files.length; i++) {
     (function(tmp_i) {
       //read current json file for settings
-      fs.readFile('./servers/' + files[tmp_i] + '.json', function(error, data) {
+      fs.readFile('./servers/' + files[tmp_i], function(error, data) {
         if (error) {
           console.error(error);
           return;
@@ -27,15 +27,15 @@ fs.readdir('./servers/', function(error, files) {
         // try to parse it
         try {
           serverSettings[files[tmp_i]] = JSON.parse(data); //Parse the settings file and add it to the global var called "serverSettings" with the key being the server ID/file name.
-        } catch(e) {
-          //throw the error if it fails. I suggest you do a bit of error handling yourself.
-          throw e;
+        } 
+		  catch(e) {
+            throw e;
         }
       });
-    })(i);
+    });
   }
-  //login with your token
-  mybot.loginWithToken('???', function (error) {
+  //login with your token. Please don't steal my token, thank you.
+  mybot.loginWithToken('MTg2NTA3NDI2MzAyNzg3NTg0.Ci54XA.56TLsTmZ82V8f3ou7Mx4oi1a6K4', function (error) {
     if (error) {
       throw error;
     }
@@ -88,30 +88,30 @@ mybot.on("message", function(message){
     }
 });
 
-// This is the module that fetches ban list from my wiki. Thanks Snazzah#0371/SnazzyPine25.
-function hasBan(userid) {
-  var list = []
-  rest('http://discord.shoutwiki.com/wiki/Ban_List').then(function(response) {
-    var templist = response.split('<table class="wikitable">')[1].split('<td>');
-    templist.forEach(function(item, index){
-      if(!isNaN(Number(item))){
-        list.push(item)
-      }
-    });
-  });
-  return list.includes(userid)
-}
+// This is the module that fetches ban list from my wiki. Thanks Snazzah#0371/SnazzyPine25. This module is no longer used in the normal script.
+// function hasBan(userid) {
+//  var list = []
+//  rest('http://discord.shoutwiki.com/wiki/Ban_List').then(function(response) {
+//    var templist = response.split('<table class="wikitable">')[1].split('<td>');
+//    templist.forEach(function(item, index){
+//      if(!isNaN(Number(item))){
+//        list.push(item)
+//      }
+//    });
+//  });
+//  return list.includes(userid)
+// }
 
 mybot.on("serverNewMember", function(server, user){
-  var blacklistID = ['182152242219057152','155111194183729153','138709835846909953','101018733564166144','182940650889674752','185752383500845056','185753017985925120','185753830590382091','163130206763220993','148309181806542849','155784937511976960'];
+  var blacklistID = ['182152242219057152','155111194183729153','138709835846909953','101018733564166144','182940650889674752','185752383500845056','185753017985925120','185753830590382091','163130206763220993','148309181806542849','142379865532792832','177414298698645504','141883348959232001','184903632033021952','155784937511976960'];
 // For customizing your blacklist without reporting it to DSH, put IDs here.
-if (hasBan(user.id)||blacklistID.includes(user.id)) {
+if (blacklistID.includes(user.id)) {
     var message = ``;
 
     message += `**Blacklisted ID found!**\n`;
     message += `**User:** ${user.name} (#${user.id})\n`;
 
-    mybot.sendMessage(serverSettings[message.channel.id], message);
+    mybot.sendMessage(message.channel.id, message);
   }
 });
 
