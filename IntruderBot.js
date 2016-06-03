@@ -35,7 +35,7 @@ fs.readdir('./servers/', function(error, files) {
     });
   }
   //login with your token. Please don't steal my token, thank you.
-  mybot.loginWithToken('MTg2NTA3NDI2MzAyNzg3NTg0.Ci54XA.56TLsTmZ82V8f3ou7Mx4oi1a6K4', function (error) {
+  mybot.loginWithToken('??????', function (error) {
     if (error) {
       throw error;
     }
