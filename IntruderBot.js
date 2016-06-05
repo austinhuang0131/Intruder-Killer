@@ -5,6 +5,9 @@
 var fs = require('fs'); // require the filesystem module
 var Discord = require("discord.js"); // Requires discord.js no doubt
 // var rest = require('rest'); If you need the auto fetch feature.
+var blacklistID = ['182152242219057152','155111194183729153','138709835846909953','101018733564166144','182940650889674752','185752383500845056','185753017985925120','185753830590382091','163130206763220993','148309181806542849','142379865532792832','177414298698645504','141883348959232001','184903632033021952','155784937511976960'];
+// For customizing your blacklist without reporting it to DSH, put IDs here.
+
 
 var mybot = new Discord.Client();
 
@@ -53,16 +56,13 @@ mybot.on('ready', function() {
 mybot.on("message", function(message){
   if (message.content === "dshset") {
     console.log('serverSettings#1: ', serverSettings);
-    console.log('serverID: ' + message.channel.id);
-    serverSettings[message.channel.id] = {
-      "settings": {}
-    };
+    console.log('serverID: ' + message.channel.server.id);
     console.log('serverSettings#2: ', serverSettings);
-    serverSettings[message.channel.id].settings.whitelisted = message.channel.id; // create the key called "whitelisted" and give it the value of the channel the message was sent form
-    console.log('serverSettings[serverID]: ', serverSettings[message.channel.id]);
+    serverSettings[message.channel.id]["settings"]["whitelisted"] = message.channel.server.id; // create the key called "whitelisted" and give it the value of the channel the message was sent form
+    console.log('serverSettings[serverID]: ', serverSettings[message.channel.server.id]);
 	mybot.reply(message, "Success!");
     // save the settings to a file
-    fs.writeFile('./servers/' + message.channel.id + '.json', JSON.stringify(serverSettings[message.channel.id]), function(error) {
+    fs.writeFile('./servers/' + message.channel.server.id + '.json', JSON.stringify(serverSettings[message.channel.server.id]), function(error) {
       if (error) {
         console.error(error);
         return;
@@ -103,9 +103,8 @@ mybot.on("message", function(message){
 // }
 
 mybot.on("serverNewMember", function(server, user){
-  var blacklistID = ['182152242219057152','155111194183729153','138709835846909953','101018733564166144','182940650889674752','185752383500845056','185753017985925120','185753830590382091','163130206763220993','148309181806542849','142379865532792832','177414298698645504','141883348959232001','184903632033021952','155784937511976960'];
-// For customizing your blacklist without reporting it to DSH, put IDs here.
-if (blacklistID.includes(user.id)) {
+if(!isNaN(rest)){ var rested = true }
+if (blacklistID.includes(user.id)) || rested && hasBan(user.id) {
     var message = ``;
 
     message += `**Blacklisted ID found!**\n`;
