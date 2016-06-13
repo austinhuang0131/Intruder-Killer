@@ -80,6 +80,33 @@ mybot.on("message", function(message){
       }
     });
   }
+  else if (message.content === "dshtestcon") {
+    if(rest!=undefined){
+    var list = [];
+    rest('http://discord.shoutwiki.com/wiki/Ban_List').then(function(response) {
+    var templist = response.entity.split('<table class="wikitable">')[1].split('<td>').join('').split('</td>');
+      templist.forEach(function(item, index){
+        if(!isNaN(Number(item))){
+          list.push(String(Number(item)));
+        }
+      });
+    });
+    setTimeout(function() {
+      if(list.length==0){
+        mybot.reply(message, "Failed to get IDs.");
+        console.info(message, "Testing connections. Failed to get IDs.");
+      }else{
+        mybot.reply(message, "Success in testing connections. Found "+list.length+" IDs");
+        console.info("Testing connections. Found "+list.length+" IDs");
+      }
+    }, 500);
+    }else{
+    	mybot.reply(message, "Rest was not found!");
+    }
+  }
+  else if (message.content === "dshabout") {
+    mybot.reply(message, "**Thank you for using Intruder Killer.** This bot is made by austinhuang and Snazzah. The ban list is managed by austinhuang and contributed by public. Having any questions, please join my server: https://discord.gg/013MqTM1p1qm52VcZ");
+  }
 });
 
 mybot.on("message", function(message){
@@ -90,21 +117,27 @@ mybot.on("message", function(message){
 
 // This is the module that fetches ban list from my wiki. Thanks Snazzah#0371/SnazzyPine25. This module is no longer used in the normal script.
 // function hasBan(userid) {
-//  var list = []
-//  rest('http://discord.shoutwiki.com/wiki/Ban_List').then(function(response) {
-//    var templist = response.split('<table class="wikitable">')[1].split('<td>');
-//    templist.forEach(function(item, index){
-//      if(!isNaN(Number(item))){
-//        list.push(item)
-//      }
-//    });
-//  });
-//  return list.includes(userid)
+//     var list = [];
+//     rest('http://discord.shoutwiki.com/wiki/Ban_List').then(function(response) {
+//     var templist = response.entity.split('<table class="wikitable">')[1].split('<td>').join('').split('</td>');
+//       templist.forEach(function(item, index){
+//         if(!isNaN(Number(item))){
+//           list.push(String(Number(item)));
+//         }
+//       });
+//     });
+//     setTimeout(function() {
+//       if(list.length == 0){
+//         hasBan(userid)
+//       }else{
+//         return list.includes(userid);
+//       }
+//     }, 500);
 // }
 
 mybot.on("serverNewMember", function(server, user){
-if(!isNaN(rest)){ var rested = true }
-if (blacklistID.includes(user.id)) || rested && hasBan(user.id) {
+if(rest!=undefined){ var rested = true }
+if (blacklistID.includes(user.id)) or rested and hasBan(user.id) {
     var message = ``;
 
     message += `**Blacklisted ID found!**\n`;
