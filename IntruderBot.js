@@ -6,7 +6,7 @@ var devs = ['96676726397997056', '158049329150427136', '155784937511976960']
 
 var mybot = new Discord.Client();
 
-mybot.loginWithToken('??????', function (error) {
+mybot.loginWithToken('MTg2NTA3NDI2MzAyNzg3NTg0.Cj4PmA.H4CbQ-MIQKZMTclR1RVBbKonsTg', function (error) {
     if (error) {
       throw error;
     }
@@ -14,12 +14,15 @@ mybot.loginWithToken('??????', function (error) {
 
 
 mybot.on('ready', function() {
-  console.info('-----------------------------------------------------------------------------');
+  console.info('------------------------------------');
   console.info('Username: ' + mybot.user.username);
   console.info('ID: ' + mybot.user.id);
   console.info('Servers: ' + mybot.servers.length);
   console.info('Channels: ' + mybot.channels.length);
-  console.info('-----------------------------------------------------------------------------');
+  console.info('------------------------------------');
+  mybot.setPlayingGame('http://bit.ly/discserv');
+  mybot.sendMessage('188796780597477376', "Bot is up!");
+  mybot.sendMessage('191997633412333578', "Bot is up!");
 });
 
 mybot.on("message", function(message,server,channel){
@@ -44,7 +47,7 @@ mybot.on("message", function(message,server,channel){
     }, 500);
   }
   else if (message.content === "dshabout") {
-    mybot.reply(message, "**Thank you for using Intruder Killer.** This bot is made by austinhuang and Snazzah. The ban list is managed by austinhuang and Edelin3, located at http://discord.shoutwiki.com/wiki/Ban_List. Having any questions, please join my server: http://discord.gg/014UYlML7lk1Fb7tB");
+    mybot.reply(message, "**Thank you for using Intruder Killer.**\nRead the docs at https://github.com/austinhuang0131/Intruder-Killer");
   }
   else if (message.content === "dshkill") {
 	if(devs.includes(message.author.id)){
@@ -52,13 +55,23 @@ mybot.on("message", function(message,server,channel){
 		mybot.logout();
 		}
 	}
+	else if (message.content === "dshmeme") {
+	  mybot.reply(message, "**Here's the memes `dshmeme [Tag]`:** diabetes, nooblance");
+	}
+	else if (message.content === "dshmeme diabetes") {
+	  mybot.reply(message, "https://cdn.discordapp.com/attachments/189046037841707008/195070303200739329/Screen_Shot_2016-06-22_at_02.52.15_meitu_1.jpg");
+	}
+	else if (message.content === "dshmeme nooblance") {
+	  mybot.reply(message, "https://cdn.discordapp.com/attachments/188796780597477376/195112386057732097/Screen_Shot_2016-06-22_at_05.45.58.png");
+	}
   else if (message.content === "dshreport") {
     mybot.createInvite(message.channel, function(err, invite) {
       if(err){
-        mybot.reply(message, "I couldn't make a invite! Did you give me **Create Instant Invite** permissions in the current channel?");
+        mybot.reply(message, "I couldn't make a invite! Did admin give me **Create Instant Invite** permissions in the current channel?");
       }else{
-        mybot.reply(message, "Agents are on their way! Please do not revoke the created invite!");
-        mybot.sendMessage('185813839818784769', "**We got an report from "+message.channel.server.name+"!** Here's its invite: "+invite.toString());
+        mybot.reply(message, "Agents are on their way! Please **do not revoke the created invite** without instruction!");
+        mybot.sendMessage('191997633412333578', "**@here We got an report from "+message.channel.server.name+"!** Here's its invite: "+invite.toString());
+        mybot.sendMessage('188796780597477376', "**@here We got an report from "+message.channel.server.name+"!** Here's its invite: "+invite.toString());
       }
     });
   }
@@ -88,7 +101,7 @@ mybot.on("serverNewMember", function(server, user){
     console.info('Seems like I found a bad guy named '+user.name+'! ('+user.id+')');
     server.banmember(user,server,function(error){
       if(error){
-        mybot.sendMessage('Error when swinging the ban hammer. Watch out.');
+        mybot.sendMessage('**Error** when swinging the ban hammer. Watch out.\nMake sure that I have Ban permission!');
         console.info('Damn Daniel, there is an error when swinging the ban hammer!');
       }
     });
