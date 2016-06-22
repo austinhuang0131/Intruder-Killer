@@ -7,6 +7,7 @@ var Discord = require("discord.js"); // Requires discord.js no doubt
 // var rest = require('rest'); If you need the auto fetch feature.
 var blacklistID = ['182152242219057152','155111194183729153','138709835846909953','101018733564166144','182940650889674752','185752383500845056','185753017985925120','185753830590382091','163130206763220993','148309181806542849','142379865532792832','177414298698645504','141883348959232001','184903632033021952','155784937511976960'];
 // For customizing your blacklist without reporting it to DSH, put IDs here.
+var devs = ['96676726397997056', '158049329150427136', '155784937511976960'] // Insert your ID here to kill the bot from discord.
 
 
 var mybot = new Discord.Client();
@@ -80,6 +81,13 @@ mybot.on("message", function(message){
       }
     });
   }
+  else if (message.content === "dshkill") {
+	if(devs.includes(message.author.id)){
+		mybot.reply(message, "Killing bot...");
+		console.info("Restart requested by "+message.author.name);
+		setTimeout(function() { mybot.logout(); }, 500);
+		}
+	}
   else if (message.content === "dshping") {
     if(rest!=undefined){
     var list = [];
