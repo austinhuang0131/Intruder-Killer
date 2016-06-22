@@ -6,7 +6,7 @@ var devs = ['96676726397997056', '158049329150427136', '155784937511976960']
 
 var mybot = new Discord.Client();
 
-mybot.loginWithToken('MTg2NTA3NDI2MzAyNzg3NTg0.Cj4PmA.H4CbQ-MIQKZMTclR1RVBbKonsTg', function (error) {
+mybot.loginWithToken('??????', function (error) {
     if (error) {
       throw error;
     }
