@@ -83,7 +83,7 @@ mybot.on("message", function(message){
   }
   else if (message.content === "dshkill") {
 	if(devs.includes(message.author.id)){
-		mybot.reply(message, "Killing bot...");
+		mybot.sendMessage(message.id, "Killing bot...");
 		console.info("Restart requested by "+message.author.name);
 		setTimeout(function() { mybot.logout(); }, 500);
 		}
