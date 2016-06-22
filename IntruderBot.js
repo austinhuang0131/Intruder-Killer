@@ -80,7 +80,7 @@ mybot.on("message", function(message){
       }
     });
   }
-  else if (message.content === "dshtestcon") {
+  else if (message.content === "dshping") {
     if(rest!=undefined){
     var list = [];
     rest('http://discord.shoutwiki.com/wiki/Ban_List').then(function(response) {
@@ -94,7 +94,7 @@ mybot.on("message", function(message){
     setTimeout(function() {
       if(list.length==0){
         mybot.reply(message, "Failed to get IDs.");
-        console.info(message, "Testing connections. Failed to get IDs.");
+        console.info("Testing connections. Failed to get IDs.");
       }else{
         mybot.reply(message, "Success in testing connections. Found "+list.length+" IDs");
         console.info("Testing connections. Found "+list.length+" IDs");
@@ -107,12 +107,16 @@ mybot.on("message", function(message){
   else if (message.content === "dshabout") {
     mybot.reply(message, "**Thank you for using Intruder Killer.** This bot is made by austinhuang and Snazzah. The ban list is managed by austinhuang and contributed by public. Having any questions, please join my server: https://discord.gg/013MqTM1p1qm52VcZ");
   }
-});
-
-mybot.on("message", function(message){
-    if(message.content === "dshreport") {
-        mybot.reply(message, "**Mute the intruder first**, fill our form, then execute ban. (If you have a Mee6, you can ban the intruder first.) https://goo.gl/forms/SJ86rcxgWWSkwnZk2");
-    }
+  else if (message.content === "dshreport") {
+    mybot.createInvite(message.channel, function(err, invite) {
+      if(err){
+        mybot.reply(message, "I couldn't make a invite! Did you give me **Create Instant Invite** permissions in the current channel?");
+      }else{
+        mybot.reply(message, "Agents are on their way! Please do not revoke the created invite!");
+        mybot.sendMessage('185813839818784769', "**We got an report from "+message.channel.server.name+"!** Here's its invite: "+invite.toString());
+      }
+    });
+  }
 });
 
 // This is the module that fetches ban list from my wiki. Thanks Snazzah#0371/SnazzyPine25. This module is no longer used in the normal script.
@@ -128,7 +132,7 @@ mybot.on("message", function(message){
 //     });
 //     setTimeout(function() {
 //       if(list.length == 0){
-//         hasBan(userid)
+//         return hasBan(userid);
 //       }else{
 //         return list.includes(userid);
 //       }
@@ -138,12 +142,13 @@ mybot.on("message", function(message){
 mybot.on("serverNewMember", function(server, user){
 if(rest!=undefined){ var rested = true }
 if (blacklistID.includes(user.id)) or rested and hasBan(user.id) {
-    var message = ``;
-
-    message += `**Blacklisted ID found!**\n`;
-    message += `**User:** ${user.name} (#${user.id})\n`;
-
-    mybot.sendMessage(message.channel.id, message);
+    console.info('Seems like I found a bad guy named '+user.name+'! ('+user.id+')');
+    server.banmember(user,server,function(error){
+      if(error){
+        mybot.sendMessage('Error when swinging the ban hammer. Watch out.');
+        console.info('Damn Daniel, there is an error when swinging the ban hammer!');
+      }
+    });
   }
 });
 
