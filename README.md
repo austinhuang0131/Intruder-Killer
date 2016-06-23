@@ -5,10 +5,16 @@ This bot is used to detect intruders listed by Discord Server Hub and prevent ra
 * Detects intruders joining your server!
   * ~~She updates ban list automatically, from my website!~~ That doesn't work well right now, so she is using a backup, which does not sync.
 * Commands
-  * `dshreport`: Calls our agents when your server get raided.
-  * `dshabout`: Tells you about our bot.
-  * `dshmeme`: Tells you some memes about this bot and austinhuang.
+  * `dshreport`: Calls her agents when your server get raided.
+  * `dshabout`: Tells you about herself. (Actually that command links here)
+  * `dshmeme`: Tells you some memes about herself and her owner, austinhuang.
+  * `dshping`: Pings the ban list.
   * `dshservlist`: Gives you a list of servers she is in.
+* Permissions
+  * Administrator: Just in case. It is suggested to keep this permission for her.
+  * Manage Roles: After `dshreport`, her agents will come to the server. They'll execute a command that gives permission to ban intruders.
+  * Ban Members: Ban intruders when they join.
+  * Create Instant Invite: `dshreport`.
 
 ## Report to us
 Before you type `dshreport`, you should have these things prepared **if you have already banned the intruders**:
