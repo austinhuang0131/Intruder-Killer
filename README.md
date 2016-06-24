@@ -1,5 +1,5 @@
 # Intruder Killer (formerly called DSHbot)
-This bot is used to detect intruders listed by Discord Server Hub and prevent raids as many as possible. [Click here to get the bot.](https://discordapp.com/oauth2/authorize?client_id=186507386981318657&scope=bot&permissions=268435469) The 4 permissions are definitely required. BTW, the bot is female.
+This bot is used to detect intruders listed by Discord Server Hub and prevent raids as many as possible. [Click here to accept the agreement](http://austinhuang0131.github.io/Intruder-Killer/agreement.html) in order to add her into your server. The 4 permissions are definitely required. BTW, the bot is female.
 
 ## Features
 * Detects intruders joining your server!
