@@ -42,5 +42,5 @@ Keep its username and ID. Report it in [issues](https://github.com/austinhuang01
 ## Discussion
 [![Discord](https://discordapp.com/api/servers/188752295108935680/widget.png?style=banner2)](http://discord.gg/013MqTM1p1qm52VcZ)
 
-## SHUT UP! HOW TO ADD THIS BOT!
-https://discordapp.com/oauth2/authorize?client_id=186507386981318657&scope=bot&permissions=268435469&response_type=code&redirect_uri=https://github.com/austinhuang0131/Intruder-Killer
+## SHUT UP! HOW TO ADD THIS BOT???
+[Probably here?](https://discordapp.com/oauth2/authorize?client_id=186507386981318657&scope=bot&permissions=268435469&response_type=code&redirect_uri=https://github.com/austinhuang0131/Intruder-Killer)
