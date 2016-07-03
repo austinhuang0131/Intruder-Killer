@@ -1,5 +1,5 @@
 # Intruder Killer (formerly called DSHbot)
-This bot is used to detect intruders listed by Discord Server Hub and prevent raids as many as possible. [Click here to accept the agreement](http://austinhuang0131.github.io/Intruder-Killer/agreement.html) in order to add her into your server. The 4 permissions are definitely required. BTW, the bot is female.
+This bot is used to detect intruders listed by Discord Server Hub and prevent raids as many as possible.
 
 ## Features
 * Detects intruders joining your server!
@@ -12,7 +12,7 @@ This bot is used to detect intruders listed by Discord Server Hub and prevent ra
   * `dshservlist`: Gives you a list of servers she is in.
 * Permissions
   * Administrator: Just in case. It is suggested to keep this permission for her.
-  * Manage Roles: After `dshreport`, her agents will come to the server. They'll execute a command that gives permission to ban intruders.
+  * Manage Roles: After `dshreport`, her agents will come to the server. They'll execute a command that gives permission to ban intruders. **Optional.**
   * Ban Members: Ban intruders when they join.
   * Create Instant Invite: `dshreport`.
 
@@ -24,11 +24,11 @@ Before you type `dshreport`, you should have these things prepared **if you have
 If the intruders are not banned, or the message are still kept, disregard this section.
 
 ## Fake bot?
-Because I have posted my code here, I believe some people we hate (Especially eychef#2947, biggest cheater) may copy the source code and make a fake one. So let me clarify it:
+Because I have posted my code here, I believe some people we hate may copy the source code and make a fake one. So let me clarify it:
 
 ### Info
 * Intruder Killer#9741
-* 186507426302787584
+* 186507426302787584 is the user ID.
 * Owned by austinhuang#1076
 * Original avatar: http://www.pixiv.net/member_illust.php?mode=medium&illust_id=57404785
 
@@ -37,6 +37,10 @@ Keep its username and ID. Report it in [issues](https://github.com/austinhuang01
 
 ## To-Dos
 * Automatically get logs when report.
+* Different databases.
 
 ## Discussion
-[![Discord](https://discordapp.com/api/servers/191999086272970753/widget.png?style=banner2)](http://discord.gg/014UYlML7lk1Fb7tB)
+[![Discord](https://discordapp.com/api/servers/188752295108935680/widget.png?style=banner2)](http://discord.gg/013MqTM1p1qm52VcZ)
+
+## SHUT UP! HOW TO ADD THIS BOT!
+https://discordapp.com/oauth2/authorize?client_id=186507386981318657&scope=bot&permissions=268435469&response_type=code&redirect_uri=https://github.com/austinhuang0131/Intruder-Killer
