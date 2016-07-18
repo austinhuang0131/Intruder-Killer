@@ -1,17 +1,15 @@
-# Intruder Killer (formerly called DSHbot)
+# Intruder Killer
 This bot is used to detect intruders listed by Discord Server Hub and prevent raids as many as possible.
 
 ## Features
 * Detects intruders joining your server!
-  * ~~She updates ban list automatically, from my website!~~ That doesn't work well right now, so she is using a backup, which does not sync.
+  * ~~She updates ban list automatically, from my website!~~ It is permanently removed for a new beta feature.
 * Commands
-  * `dshreport`: Calls her agents when your server get raided.
-  * `dshabout`: Tells you about herself. (Actually that command links here)
-  * `dshmeme`: Tells you some memes about herself and her owner, austinhuang.
-  * `dshping`: Pings the ban list.
-  * `dshservlist`: Gives you a list of servers she is in.
+  * `@Intruder Killer report`: Calls her agents when your server get raided.
+  * `@Intruder Killer about`: Tells you about herself. (Actually that command links here)
+  * `@Intruder Killer meme`: Tells you some memes about herself and her owner, austinhuang.
 * Permissions
-  * Administrator: Just in case. It is suggested to keep this permission for her.
+  * Administrator: Just in case. It is suggested to keep this permission for her. **Optional.**
   * Manage Roles: After `dshreport`, her agents will come to the server. They'll execute a command that gives permission to ban intruders. **Optional.**
   * Ban Members: Ban intruders when they join.
   * Create Instant Invite: `dshreport`.
