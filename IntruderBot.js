@@ -3,14 +3,16 @@
 var rest = require('rest'); // https://github.com/cujojs/rest
 var Discord = require("discord.js"); // Requires discord.js no doubt
 var fs = require('fs'); // filesystem for config
-var devs = ['96676726397997056', '158049329150427136', '155784937511976960'];
-var agents = ['96676726397997056', '155784937511976960', '97020726904635392', '155784937511976960', '109511645872521216'];
-var bl = ['182152242219057152', '155111194183729153', '138709835846909953', '101018733564166144', '182940650889674752', '185752383500845056', '185753017985925120', '185753830590382091', '163130206763220993', '142379865532792832', '177414298698645504', '141883348959232001', '184903632033021952', '187341009548607488', '93143850175975424', '162269375611666432', '82574907715616768', '172882961056661505', '168644375679598592', '153486961431019520', '108548330354667520', '153486961431019520', '163925197664026624', '146115953933942784', '187602068129710081', '144276155527069696', '84282077893132288', '165268334382678016', '185521195582619648', '157692268407554048', '171003901053632512', '136454060407521280', '133055234380529664', '181242643928449024', '93177065687240704', '109821286888296448', '150756167063306240', '190175506866503681', '122363757576847360', '162984946372313088', '92491108734484480', '191835100147613696', '191827268543184896', '191838891420942336', '191837919550373889', '162254357662793728', '92372944457580544', '131527476626063361', '169494230845095936', '193507398021939200', '162334579758202880', '193523277614940160', '193523277614940160', '193523277614940160', '156816025386614785', '141001087443402754', '152413443872260096', '163030561487585281', '163121606762168330', '139601973291909122', '127532575349538816', '141271486253105152', '92025602311217152', '92017896187789312', '134861419773558784', '195446123622563840', '122719428042424326', '173958296800198657', '174023319497080832', '173108395543363594', '111911375269330944', '166181894319243264', '107946686617235456', '169240352358662144', '104324069033267200', '173283825944625152', '189852238603223041', '193842980610768896', '192831672096391170', '178543712974929920', '200205647864659968'];
-var sbl= ['130873964397461504', '130426499626041344', '188430473779740673', '185116921530810368', '180079717653676032', '160784535645061122'];
+var devs = ['158049329150427136', '155784937511976960']; // Snazzah(SnazzyPine25) and austinhuang(austinhuang0131)
+var agents = ['155784937511976960', '158049329150427136', '109511645872521216', '97020726904635392']; // austinhuang, Snazzah, BoySanic, Bingo92707
+var bl = ['182152242219057152', '155111194183729153', '138709835846909953', '101018733564166144', '182940650889674752', '185752383500845056', '185753017985925120', '185753830590382091', '142379865532792832', '177414298698645504', '141883348959232001', '184903632033021952', '187341009548607488', '93143850175975424', '162269375611666432', '82574907715616768', '172882961056661505', '168644375679598592', '153486961431019520', '108548330354667520', '153486961431019520', '163925197664026624', '146115953933942784', '187602068129710081', '144276155527069696', '84282077893132288', '165268334382678016', '185521195582619648', '157692268407554048', '171003901053632512', '136454060407521280', '133055234380529664', '93177065687240704', '109821286888296448', '150756167063306240', '190175506866503681', '122363757576847360', '162984946372313088', '92491108734484480', '191835100147613696', '191827268543184896', '191838891420942336', '191837919550373889', '162254357662793728', '92372944457580544', '131527476626063361', '169494230845095936', '193507398021939200', '162334579758202880', '193523277614940160', '193523277614940160', '193523277614940160', '156816025386614785', '141001087443402754', '152413443872260096', '163030561487585281', '163121606762168330', '139601973291909122', '127532575349538816', '92025602311217152', '92017896187789312', '195446123622563840', '122719428042424326', '173958296800198657', '174023319497080832', '173108395543363594', '111911375269330944', '166181894319243264', '107946686617235456', '169240352358662144', '104324069033267200', '173283825944625152', '189852238603223041', '192831672096391170', '178543712974929920', '200205647864659968', '174397080821825546', '201593958575374337', '152887367273938946', '200205647864659968', '203033180377186305', '103990979324825600', '206255959595548673']; // Oh shit waddup
+var wl = ['181242643928449024', '113349501212782592', '141271486253105152', '134861419773558784', '163130206763220993']; // Watchlist
+var il = ['110373943822540800', '188752295108935680', '185812630147956745', '166705905147052034'];
+var sbl= ['130873964397461504', '130426499626041344', '188430473779740673', '185116921530810368', '180079717653676032', '160784535645061122']; // These servers have commands ignored
 
 var mybot = new Discord.Client();
 
-mybot.loginWithToken('??????', function (error) {
+mybot.loginWithToken('??????', function (error) { // Token m8
     if (error) {throw error;}
 });
 
@@ -57,7 +59,12 @@ mybot.on("message", function(message,server){
   }
   // All dshmeme commands & dshabout by austinhuang
   else if (message.content === "<@186507426302787584> about") {
-    mybot.reply(message, "**Thank you for using Intruder Killer.**\nPlease read my documentation: https://github.com/austinhuang0131/Intruder-Killer\nBan List: http://discord.shoutwiki.com/wiki/Ban_List\n*Owned by austinhuang#1076.*");
+    mybot.reply(message, "**Thank you for using Intruder Killer.** A list of commands are sent to you by DM.\nPlease also read my documentation: https://github.com/austinhuang0131/Intruder-Killer\nBan List: http://discord.shoutwiki.com/wiki/Ban_List\n*Owned by austinhuang#1076.*");
+	mybot.sendMessage(message.author, "**List of commands:**\n`@Intruder Killer report`: Reports a raid.\n`@Intruder Killer meme`: Shows some useless meme.\nJoin my support server: http://discord.gg/013MqTM1p1qm52VcZ");
+  }
+  else if (message.content === "<@186507426302787584> help") {
+    mybot.reply(message, "**Thank you for using Intruder Killer.** A list of commands are sent to you by DM.\nPlease also read my documentation: https://github.com/austinhuang0131/Intruder-Killer\nBan List: http://discord.shoutwiki.com/wiki/Ban_List\n*Owned by austinhuang#1076.*");
+	mybot.sendMessage(message.author, "**List of commands:**\n`@Intruder Killer report`: Reports a raid.\n`@Intruder Killer meme`: Shows some useless meme.\nJoin my support server: http://discord.gg/013MqTM1p1qm52VcZ");
   }
   else if (message.content === "<@186507426302787584> meme") {
 	mybot.reply(message, "**Here are my memes:** `<@186507426302787584> meme [Tag]` diabetes, nooblance, ebola, avatar");
@@ -110,7 +117,7 @@ mybot.on("message", function(message,server){
 	  mybot.createRole(message.channel.server.id,
 	  {
     color : 0xFF0000,
-    hoist : false,
+    hoist : true,
     name : "DSH",
     permissions : [
       "banMembers"
@@ -138,13 +145,14 @@ mybot.on("message", function(message,server){
 		  mybot.reply(message, "Thanks for returning my hammer! Arigato!");
 	}   
   }
-// Server Config (Beta)
+// Server Config (Beta) IT BROKE
   else if (message.content === "<@186507426302787584> config") {
 	  fs.readFile('/server/'+message.channel.server.id, function (err) {
 	  	if (err) {
 			mybot.reply(message, 'An error occured when reading the config. If you would like to make a new config, `config new`.');
 			mybot.sendMessage('197950685608804352', 'Error when reading config of '+message.channel.server.name+' ('+message.channel.server.id+').');
 			console.log('Error when reading config of '+message.channel.server.name+' ('+message.channel.server.id+').');
+	        throw err;
 		} else {
 			var configmsg = 'Here\'s the config. :large_blue_circle: means enabled, :red_circle: means error, :white_circle: means disabled.';
 			fs.readFile('/server/'+message.channel.server.id+':2', function (err, data) {
@@ -171,19 +179,22 @@ mybot.on("message", function(message,server){
 	  });
   }
   else if (message.content === "<@186507426302787584> config new") {
-	fs.write(open('/server/'+message.channel.server.id+'.json:2'), 'IK Config for '+message.channel.server.name+' ('+message.channel.server.id+')\nautoban=true\nautoban_basic=true', function(err) {
-	if (err) {mybot.reply(message, '**OH NO!!!** An error occured when creating a config. Probably I\'m having some problems. Contact austinhuang#1076 for details.');}
+	fs.write(open('/server/'+message.channel.server.id), 'IK Config for '+message.channel.server.name+' ('+message.channel.server.id+')\nautoban=true\nautoban_basic=true', function(err) {
+	if (err) {
+		mybot.reply(message, '**OH NO!!!** An error occured when creating a config. Probably I\'m having some problems. Contact austinhuang#1076 for details.');
+		throw err;
+	}
 	else {mybot.reply(message, 'Done!');}
 	});
   }
 });
 
-// mybot.on("serverCreated", function(server){
-//	console.log('I joined '+server.name+' ('+server.id+')!');
-//	mybot.sendMessage(server.defaultChannel, 'Konichiwa! I am **Intruder Killer**, the bot for raid prevention and server protection! I would like to //say "Arigato!" to you for inviting me to your server! If you have any problems, type `dshabout` for more details. Yoroshiku Onegaishimasu.');
-//	mybot.sendMessage('197950685608804352', 'I joined '+server.name+' ('+server.id+')!');
-//	mybot.sendMessage(server.owner, 'Konichiwa! I am **Intruder Killer**, the bot for raid prevention and server protection! If you have any questions //on me, you can join http://discord.gg/013MqTM1p1qm52VcZ, or ask austinhuang#1076 and Snazzah#0371. Yoroshiku Onegaishimasu.');
-//});
+mybot.on("serverCreated", function(server){
+	console.log('I joined '+server.name+' ('+server.id+')!');
+	mybot.sendMessage(server.defaultChannel, 'Konichiwa! I am **Intruder Killer**, the bot for raid prevention and server protection! I would like to say "Arigato!" to you for inviting me to your server! If you have any problems, type `@Intruder Killer about` for more details. Yoroshiku Onegaishimasu.');
+	mybot.sendMessage('197950685608804352', 'I joined '+server.name+' ('+server.id+')!');
+	mybot.sendMessage(server.owner, 'Konichiwa! I am **Intruder Killer**, the bot for raid prevention and server protection! If you have any questions on me, you can join http://discord.gg/013MqTM1p1qm52VcZ, or ask austinhuang#1076 and Snazzah#0371. Yoroshiku Onegaishimasu.');
+});
 
 // NUKES LISTED INTRUDERS AT ONCE
 mybot.on("serverNewMember", function(server, user){
@@ -192,11 +203,11 @@ mybot.on("serverNewMember", function(server, user){
 		mybot.sendMessage('197950685608804352', 'Found listed user '+user.name+'. ('+user.id+').');
         mybot.banMember(user,server,7,function(error){
         	if(error){
-            	mybot.sendMessage(server, 'Wait, why...The hammer is so heavy...Did I have **Ban Members** permission?');
+            	mybot.sendMessage(server, 'Wait, why...The hammer is so heavy...Did I have **Ban Members** permission?\n__Found listed user **'+user.name+' ('+user.id+')**.__');
             	console.log('Ban failed on '+server.name+' ('+server.id+').');
             	mybot.sendMessage('197950685608804352', 'Ban failed on '+server.name+' ('+server.id+').');
         	} else {
-            	mybot.sendMessage(server, "I cannot wait for the hammer to come out...Idekimasuyo!");
+            	mybot.sendMessage(server, 'I cannot wait for the hammer to come out...Idekimasuyo!\n__Banned listed user **'+user.name+' ('+user.id+')**.__');
   	        	console.log('Ban success on '+server.name+' ('+server.id+').');
   	        	mybot.sendMessage('197950685608804352', 'Ban success on '+server.name+' ('+server.id+').');
 			}
